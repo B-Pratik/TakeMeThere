@@ -1,22 +1,15 @@
+import registerController from '../compositions/booking-page/controller';
+import registerView from '../compositions/booking-page/template.html';
+
 export default function ($stateProvider, $urlRouterProvider) {
     'ngInject';
-    $urlRouterProvider.otherwise('/');
+    
+    $urlRouterProvider.otherwise('/register');
 
     $stateProvider
-        .state('default', {
-            url: '/?token',
-            template: '<hello-world author="{{launch.data.author}}"></hello-world>',
-            controller: stateController,
-            controllerAs: 'launch'
+        .state('home', {
+            url       : '/register',
+            template  : registerView,
+            controller: registerController
         });
-}
-
-function stateController($scope, appName) {
-    'ngInject';
-    this.data = {
-      author: 'Pratik Bhurewar',
-      appName: 'app',
-      description: 'description is long'
-    };
-
 }
